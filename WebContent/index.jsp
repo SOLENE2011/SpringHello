@@ -12,8 +12,8 @@
 <body>
 <ul>
 	<li><a href="<c:url value='/hello.do' />">/hello.do</a>(HelloController)</li>
-	<li><a href="<c:url value='/article/newArticle.do' />"></a>(NewArticleController, 커맨드 객체 예제)</li>
-	<li><a href="<c:url value='/order/order.do' />"></a>(OrderController, 커맨드 객체로 List 받기 예제)</li>
+	<li><a href="<c:url value='/article/newArticle.do' />">/article/newArticle.do</a>(NewArticleController, 커맨드 객체 예제)</li>
+	<li><a href="<c:url value='/order/order.do' />">/order/order.do</a>(OrderController, 커맨드 객체로 List 받기 예제)</li>
 <li><a href="<c:url value='/search/internal.do' />?query=q&p=2">/search/internal.do</a>
 				<a href="<c:url value='/search/external.do' />?query=p&">/search/external.do</a>
 			 (SearchController, @RequestParam 예제)</li>
