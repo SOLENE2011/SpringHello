@@ -7,5 +7,12 @@
 </head>
 <body>
 	인사말: <strong>${greeting}</strong>
+	<!-- 		
+		mav.setViewName("hello"); //jsp파일 hello.jsp
+		mav.addObject("greeting",getGreeting()); 
+		(HelloController.java) 모델에 "greeting"이라는 이름으로 String 타입의 값을 추가
+		jsp에서 사용함~!
+	-->
+
 </body>
 </html>

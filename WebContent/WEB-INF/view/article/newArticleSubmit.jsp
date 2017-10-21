@@ -6,8 +6,19 @@
 <title>게시글 쓰기</title>
 </head>
 <body>
-게시글 등록됨:
+게시글 등록됨
+<br/>
+<!-- 
+뷰 Code에서는 컨트롤러의 @RequestMapping Annotation 메서드에서 전달받은 커맨드 객체에 접근할 수 있다
+즉, 커맨드 객체는 자동으로 모델에 추가된다. (단, 첫 글자는 소문자이다.)
+public String submit(@ModelAttribute NewArticleCommand command)
+command가 아니라 NewArticleCommand
+ -->
+제목 : ${newArticleCommand.title}
+내용 : ${newArticleCommand.content}
 <br/>
 제목 : ${command.title}
+내용 : ${command.content}
 </body>
 </html>
+
