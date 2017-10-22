@@ -14,9 +14,6 @@
 public String submit(@ModelAttribute NewArticleCommand command)
 command가 아니라 NewArticleCommand
  -->
-제목 : ${newArticleCommand.title}
-내용 : ${newArticleCommand.content}
-<br/>
 제목 : ${command.title}
 내용 : ${command.content}
 </body>

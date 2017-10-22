@@ -31,7 +31,7 @@ public class NewArticleController {
 	// 폼에 입력한 값을 해당 Java빈 Class의 프로퍼티 값으로 설정해주는 기능을 제공하고 있다.
 	//뷰 Code에서는 컨트롤러의 @RequestMapping Annotation 메서드에서 전달받은 커맨드 객체에 접근할 수 있다
 	// 즉, 커맨드 객체는 자동으로 모델에 추가된다. (단, 첫 글자는 소문자이다.)
-	public String submit(@ModelAttribute NewArticleCommand command) {
+	public String submit(@ModelAttribute("command") NewArticleCommand command) {
 		articleService.writeArticle(command);
 		return "article/newArticleSubmit";
 	}

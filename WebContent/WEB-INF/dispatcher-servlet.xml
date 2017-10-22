@@ -13,6 +13,13 @@ DispatcherServlet은 WEB-INF/ 디렉터리에 위치한 [Servlet이름]-servlet.
 		http://www.springframework.org/schema/context 
 		http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
+	<!--  DispacherServlet은 이 뷰 이름과 매칭되는 뷰 구현체를 찾기 위해 ViewResolver를 사용  -->
+	<!-- 컨트롤러의 처리 결과를 생성할 뷰를 결정한다. (결정자 : Resolver) -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/view/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
 	<!-- 
 	dispatcher-servlet.xml 설정 파일에 등록이 완료되면, 
 	@RequestMapping Annotation의 값으로 설정한 URI와 매칭되는 클라이언트의 요청을
@@ -20,19 +27,9 @@ DispatcherServlet은 WEB-INF/ 디렉터리에 위치한 [Servlet이름]-servlet.
 	 -->
 	<bean id="helloController" class="madvirus.spring.chap06.controller.HelloController" />
 	
-	<!-- 
-	DispacherServlet은 이 뷰 이름과 매칭되는 뷰 구현체를 찾기 위해 ViewResolver를 사용
-	 -->
-	<!-- 컨트롤러의 처리 결과를 생성할 뷰를 결정한다. (결정자 : Resolver) -->
-	
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/view/" />
-		<property name="suffix" value=".jsp" />
-	</bean>
-
-	<bean class="madvirus.spring.chap06.controller.CharacterInfoController" />
-
 	<bean class="madvirus.spring.chap06.controller.OrderController" />
+	
+	<bean class="madvirus.spring.chap06.controller.CharacterInfoController" />
 	
 	<bean class="madvirus.spring.chap06.controller.HeaderController" />
 	
