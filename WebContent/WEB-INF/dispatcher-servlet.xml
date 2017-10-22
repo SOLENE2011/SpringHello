@@ -3,7 +3,6 @@
 <!-- 
 DispatcherServlet은 WEB-INF/ 디렉터리에 위치한 [Servlet이름]-servlet.xml 파일을 SPRING 설정 파일로 사용한다.
  -->
-
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:p="http://www.springframework.org/schema/p"
@@ -12,6 +11,13 @@ DispatcherServlet은 WEB-INF/ 디렉터리에 위치한 [Servlet이름]-servlet.
 		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
 		http://www.springframework.org/schema/context 
 		http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+<!-- 		
+<context:component-scan base-package="madvirus.spring.chap06.controller" /> 
+@Controller Annotation은 @Component Annotation과 마찬가지로 컴포넌트 스캔 대상이다. 
+따라서 <context:component-scan>
+태그를 이용해서 @Controller Annotation이 적용된 컨트롤러 Class를 자동으로 로딩할 수 있다.
+이걸 쓰면 아래 <bean id=""> 이런걸 하나하나 설정하지 않아도 된다.
+-->
 
 	<!--  DispacherServlet은 이 뷰 이름과 매칭되는 뷰 구현체를 찾기 위해 ViewResolver를 사용  -->
 	<!-- 컨트롤러의 처리 결과를 생성할 뷰를 결정한다. (결정자 : Resolver) -->
@@ -27,18 +33,27 @@ DispatcherServlet은 WEB-INF/ 디렉터리에 위치한 [Servlet이름]-servlet.
 	 -->
 	<bean id="helloController" class="madvirus.spring.chap06.controller.HelloController" />
 	
+	<bean id = "newArticleController" class="madvirus.spring.chap06.controller.NewArticleController" 
+		p:articleService-ref="articleService" />
+		
+	<bean id = "articleService" class="madvirus.spring.chap06.service.ArticleService" />
+	
 	<bean class="madvirus.spring.chap06.controller.OrderController" />
 	
-	<bean class="madvirus.spring.chap06.controller.CharacterInfoController" />
+	<bean id = "searchController" class="madvirus.spring.chap06.controller.SearchController" />
+	
+	<bean id="cookieController" class="madvirus.spring.chap06.controller.CookieController" />
 	
 	<bean class="madvirus.spring.chap06.controller.HeaderController" />
 	
-	<bean class="madvirus.spring.chap06.service.SearchService" />
+	<bean id="searchService" class="madvirus.spring.chap06.service.SearchService" />
 	
 	<bean class="madvirus.spring.chap06.controller.GameSearchController" 
 		p:searchService-ref="searchService" />
-	
+		
 	<bean class="madvirus.spring.chap06.controller.CreateAccountController" />
+	
+	<bean class="madvirus.spring.chap06.controller.CharacterInfoController" />
 	
 	<bean class="madvirus.spring.chap06.controller.GameInfoController" />
 	
@@ -59,16 +74,10 @@ DispatcherServlet은 WEB-INF/ 디렉터리에 위치한 [Servlet이름]-servlet.
 		</property>
 	</bean>	
 	
-	<bean id="searchService" class="madvirus.spring.chap06.service.SearchService" />
 	
-	<bean id = "newArticleController" class="madvirus.spring.chap06.controller.NewArticleController" 
-		p:articleService-ref="articleService" />
 		
-	<bean id = "articleService" class="madvirus.spring.chap06.service.ArticleService" />
-	
-	<bean id = "searchController" class="madvirus.spring.chap06.controller.SearchController" />
-	
-	<bean id="cookieController" class="madvirus.spring.chap06.controller.CookieController" />
+
+
 	
 	<bean id="authenticator" class="madvirus.spring.chap06.service.MockAuthenticator" 
 		p:commonLogger-ref="commonLogger" />

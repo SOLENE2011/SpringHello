@@ -20,6 +20,8 @@ public class GameSearchController {
 
 	@Autowired
 	private SearchService searchService;
+	// 자동으로 SearchService가 자동으로 세팅된거.
+	// @Autowired에 설정된 Service 폴더 안에 자바파일들 역시 dispatcher에 설정해야함
 	
 	@ModelAttribute("searchTypeList")
 	public List<SearchType> referenceSearchTypeList() {
@@ -43,6 +45,9 @@ public class GameSearchController {
 	@RequestMapping("/search/game.do")
 	public ModelAndView search(@ModelAttribute("command") 
 	SearchCommand command) {
+		// ModelAndView를 리턴할 경우 ModelAndView Class의 생성자나 
+		// setViewName() 메서드를 이용해서 뷰 이름을 지정할 수 있다.
+		// SearchCommand 	private String type; private String query; private int page;
 		ModelAndView mav = new ModelAndView("search/game");
 		System.out.println("검색어 = " + command.getQuery().toUpperCase());
 		SearchResult result = searchService.search(command);
