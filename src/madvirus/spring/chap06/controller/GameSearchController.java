@@ -30,6 +30,10 @@ public class GameSearchController {
 		options.add(new SearchType(2, "아이템"));
 		options.add(new SearchType(3, "캐릭터"));
 		return options;
+		// 메서드 위에 @ModelAttribute("searchTypeList")
+		// ModelandView가 없어도
+		// 메서드에서 처리한 결과가
+		// 객체에 올라가서 jsp에서 사용한다.
 	}
 	
 	@ModelAttribute("popularQueryList")
